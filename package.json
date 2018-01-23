@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rimraf ./dist && tsc && concurrently 'tsc -w' 'nodemon --harmony ./dist/index.js'",
-    "test": "rimraf ./dist && tsc && concurrently 'tsc -w' 'jest --watch ./dist'"
+    "test": "tsc && jest --watch ./dist",
+    "compile": "tsc && node ./dist/index.js",
+    "start": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/jest": "^21.1.8",
-    "concurrently": "^3.5.1",
+    "@types/node": "^9.3.0",
     "jest": "^21.2.1",
     "nodemon": "^1.12.1",
     "rimraf": "^2.6.2",
